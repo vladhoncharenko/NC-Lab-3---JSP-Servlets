@@ -44,61 +44,68 @@ public class SqlExecutorServlet extends HttpServlet {
             out.println("<input type=\"text\" name=\"query\" value=\"" + request.getParameter("query") + "\" size=\"100\" />");
         }
 
+        out.println("<input type=\"submit\" name=\"RUNb\" value=\"RUN\"/>");
         out.println("</form>");
 
+        String execute = request.getParameter("RUNb");
+        if (execute == null) {
+            //no button has been selected
+        } else if (execute.equals("RUN")) {
+            out.println("<table border='1'><tr>");
 
-        out.println("<table border='1'><tr>");
+            try {
 
-        try {
+                conn = WebLogicDbConnect.getConnect();
+                stmt = conn.createStatement();
 
-            conn = WebLogicDbConnect.getConnect();
-            stmt = conn.createStatement();
+                rs = stmt.executeQuery(request.getParameter("query"));
+                rsm = rs.getMetaData();
+                int colCount = rsm.getColumnCount();
 
-            rs = stmt.executeQuery(request.getParameter("query"));
-            rsm = rs.getMetaData();
-            int colCount = rsm.getColumnCount();
+                //print column names
+                for (int i = 1; i <= colCount; ++i) {
 
-            //print column names
-            for (int i = 1; i <= colCount; ++i) {
-
-                out.println("<th>" + rsm.getColumnName(i) + "</th>");
-            }
-
-            out.println("</tr>");
-            //print data
-            while (rs.next()) {
-
-                out.println("<tr>");
-
-                for (int i = 1; i <= colCount; ++i)
-                    out.println("<td>" + rs.getString(i) + "</td>");
+                    out.println("<th>" + rsm.getColumnName(i) + "</th>");
+                }
 
                 out.println("</tr>");
-            }
+                //print data
+                while (rs.next()) {
 
-        } catch (Exception e) {
+                    out.println("<tr>");
 
-            try {
-                throw new ServletException(e.getMessage());
-            } catch (ServletException e1) {
-                e1.printStackTrace();
-            }
+                    for (int i = 1; i <= colCount; ++i)
+                        out.println("<td>" + rs.getString(i) + "</td>");
 
-        } finally {
-
-            try {
-                if (stmt != null) {
-                    stmt.close();
-                }
-                if (conn != null) {
-                    conn.close();
+                    out.println("</tr>");
                 }
 
-            } catch (SQLException e) {
-                System.out.println("SQLException");
-            }
+            } catch (Exception e) {
 
+                try {
+                    throw new ServletException(e.getMessage());
+                } catch (ServletException e1) {
+                    e1.printStackTrace();
+                }
+
+            } finally {
+
+                try {
+                    if (stmt != null) {
+                        stmt.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+
+                } catch (SQLException e) {
+                    System.out.println("SQLException");
+                }
+
+            }
         }
+
+
         out.println("</table></body></html>");
         out.close();
 
