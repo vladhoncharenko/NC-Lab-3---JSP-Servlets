@@ -32,7 +32,12 @@ public class SqlExecutorServlet extends HttpServlet {
         Statement stmt = null;
         ResultSet rs = null;
         ResultSetMetaData rsm = null;
-
+        RequestDispatcher rd = request.getRequestDispatcher("header.jsp");
+        try {
+            rd.include(request,response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
         response.setContentType("text/html");
         java.io.PrintWriter out = response.getWriter();
         out.println("<html><head><title>Database SQL Executor</title></head><body>");
@@ -108,6 +113,12 @@ public class SqlExecutorServlet extends HttpServlet {
 
         out.println("</table></body></html>");
         out.close();
+//        rd = request.getRequestDispatcher("footer.jsp");
+//        try {
+//            rd.include(request,response);
+//        } catch (ServletException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
