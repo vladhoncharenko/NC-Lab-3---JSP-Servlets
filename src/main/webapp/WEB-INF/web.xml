@@ -16,6 +16,10 @@
         <servlet-name>addDeptntServlet</servlet-name>
         <servlet-class>servlets.addDeptntServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addEmplServlet</servlet-name>
+        <servlet-class>servlets.addEmplServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -27,5 +31,9 @@
     <servlet-mapping>
         <servlet-name>addDeptntServlet</servlet-name>
         <url-pattern>/departmentadd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addEmplServlet</servlet-name>
+        <url-pattern>/employeeadd</url-pattern>
     </servlet-mapping>
 </web-app>
