@@ -51,9 +51,10 @@ public class addDeptntServlet extends HttpServlet {
         out.println("</form>");
         out.println("<script type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>");
         out.println("<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js\"></script>");
-        out.println("<script>");
-        out.println(" $.validate();");
-        out.println("</script>");
+        out.println("<link href=\"//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/theme-default.min.css\"\n" +
+                "    rel=\"stylesheet\" type=\"text/css\" />");
+        out.println("<script>$.validate();</script>");
+
         int result = 0;
         String query = null;
         query = ("INSERT INTO DEPTNT(DNAME,LOC) VALUES('" + request.getParameter("dname") + "','" + request.getParameter("loc") + "')");

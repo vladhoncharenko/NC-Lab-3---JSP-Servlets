@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * Can be used to execute queries
+ */
 public class SqlExecutorServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -25,7 +28,6 @@ public class SqlExecutorServlet extends HttpServlet {
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
 
         ResultSet resultSet = null;
         ResultSetMetaData rsm = null;
@@ -61,15 +63,15 @@ public class SqlExecutorServlet extends HttpServlet {
 
         }
 
-        out.println("</table></body></html>");
+        out.println("</body></html>");
         out.close();
 
-//        requestDispatcher = request.getRequestDispatcher("footer.jsp");
-//        try {
-//            requestDispatcher.include(request,response);
-//        } catch (ServletException e) {
-//            e.printStackTrace();
-//        }
+        requestDispatcher = request.getRequestDispatcher("footer.jsp");
+        try {
+            requestDispatcher.include(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
 
     }
 }
