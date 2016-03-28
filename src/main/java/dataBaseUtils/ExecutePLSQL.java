@@ -13,7 +13,7 @@ import java.sql.SQLException;
 public class ExecutePLSQL {
 
     /**
-     * Executes PLSQL query
+     * Executes Select PLSQL query
      *
      * @param query query to execute
      * @return ResultSet
@@ -61,5 +61,43 @@ public class ExecutePLSQL {
         }
 
         return cachedRowSet;
+    }
+
+    /**
+     * Executes Update PLSQL query
+     *
+     * @param query query to execute
+     * @return int number of rows affected by the query
+     */
+    public static int executeUpdate(String query) {
+
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        int result = 0;
+
+        try {
+            connection = WebLogicDbConnect.getConnect();
+            preparedStatement = connection.prepareStatement(query);
+            result = preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+
+            try {
+                if (preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+
+            } catch (SQLException e) {
+                System.out.println("SQLException");
+            }
+
+        }
+
+        return result;
     }
 }
