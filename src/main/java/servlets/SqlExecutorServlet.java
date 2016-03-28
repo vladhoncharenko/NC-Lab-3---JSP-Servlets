@@ -1,5 +1,6 @@
 package servlets;
 
+import dataBaseUtils.ExecutePLSQL;
 import dataBaseUtils.ResultSetDisplay;
 import dataBaseUtils.WebLogicDbConnect;
 
@@ -26,8 +27,7 @@ public class SqlExecutorServlet extends HttpServlet {
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
+
         ResultSet resultSet = null;
         ResultSetMetaData rsm = null;
 
@@ -57,38 +57,14 @@ public class SqlExecutorServlet extends HttpServlet {
             //no button has been selected
         } else if (execute.equals("RUN")) {
 
-            try {
+            resultSet = ExecutePLSQL.executeQuery(request.getParameter("query"));
+            ResultSetDisplay.display(resultSet, out);
 
-                connection = WebLogicDbConnect.getConnect();
-                preparedStatement = connection.prepareStatement(request.getParameter("query"));
-                resultSet = preparedStatement.executeQuery();
-                ResultSetDisplay.display(resultSet, out);
+        }
 
-            } catch (Exception e) {
+        out.println("</table></body></html>");
+        out.close();
 
-                try {
-                    throw new ServletException(e.getMessage());
-                } catch (ServletException e1) {
-                    e1.printStackTrace();
-                }
-            } finally {
-
-                try {
-                    if (preparedStatement != null) {
-                        preparedStatement.close();
-                    }
-                    if (connection != null) {
-                        connection.close();
-                    }
-
-                } catch (SQLException e) {
-                    System.out.println("SQLException");
-                }
-
-            }
-
-            out.println("</table></body></html>");
-            out.close();
 //        requestDispatcher = request.getRequestDispatcher("footer.jsp");
 //        try {
 //            requestDispatcher.include(request,response);
@@ -96,9 +72,9 @@ public class SqlExecutorServlet extends HttpServlet {
 //            e.printStackTrace();
 //        }
 
-        }
     }
 }
+
 
 
 

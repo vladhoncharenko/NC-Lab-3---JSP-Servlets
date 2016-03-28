@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class ResultSetDisplay {
 
     /**
-     * Method displays ResultSet content in the table.
+     * Displays ResultSet content in the html table
      *
      * @param resultSet ResultSet
      * @param out PrintWriter
