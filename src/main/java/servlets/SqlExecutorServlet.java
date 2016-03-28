@@ -1,13 +1,11 @@
 package servlets;
 
+import dataBaseUtils.ResultSetDisplay;
 import dataBaseUtils.WebLogicDbConnect;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.PrintWriter;
+import java.sql.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -28,18 +26,20 @@ public class SqlExecutorServlet extends HttpServlet {
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        Connection conn = null;
-        Statement stmt = null;
-        ResultSet rs = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
         ResultSetMetaData rsm = null;
-        RequestDispatcher rd = request.getRequestDispatcher("header.jsp");
+
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("header.jsp");
         try {
-            rd.include(request,response);
+            requestDispatcher.include(request, response);
         } catch (ServletException e) {
             e.printStackTrace();
         }
+
         response.setContentType("text/html");
-        java.io.PrintWriter out = response.getWriter();
+        PrintWriter out = response.getWriter();
         out.println("<html><head><title>Database SQL Executor</title></head><body>");
         out.println("<form method=\"post\" action=\"/lab3/execute\">");
         out.println("<h2>Enter query in input area and press button \"Enter\"</h2>");
@@ -56,34 +56,13 @@ public class SqlExecutorServlet extends HttpServlet {
         if (execute == null) {
             //no button has been selected
         } else if (execute.equals("RUN")) {
-            out.println("<table border='1'><tr>");
 
             try {
 
-                conn = WebLogicDbConnect.getConnect();
-                stmt = conn.createStatement();
-
-                rs = stmt.executeQuery(request.getParameter("query"));
-                rsm = rs.getMetaData();
-                int colCount = rsm.getColumnCount();
-
-                //print column names
-                for (int i = 1; i <= colCount; ++i) {
-
-                    out.println("<th>" + rsm.getColumnName(i) + "</th>");
-                }
-
-                out.println("</tr>");
-                //print data
-                while (rs.next()) {
-
-                    out.println("<tr>");
-
-                    for (int i = 1; i <= colCount; ++i)
-                        out.println("<td>" + rs.getString(i) + "</td>");
-
-                    out.println("</tr>");
-                }
+                connection = WebLogicDbConnect.getConnect();
+                preparedStatement = connection.prepareStatement(request.getParameter("query"));
+                resultSet = preparedStatement.executeQuery();
+                ResultSetDisplay.display(resultSet, out);
 
             } catch (Exception e) {
 
@@ -92,15 +71,14 @@ public class SqlExecutorServlet extends HttpServlet {
                 } catch (ServletException e1) {
                     e1.printStackTrace();
                 }
-
             } finally {
 
                 try {
-                    if (stmt != null) {
-                        stmt.close();
+                    if (preparedStatement != null) {
+                        preparedStatement.close();
                     }
-                    if (conn != null) {
-                        conn.close();
+                    if (connection != null) {
+                        connection.close();
                     }
 
                 } catch (SQLException e) {
@@ -108,18 +86,17 @@ public class SqlExecutorServlet extends HttpServlet {
                 }
 
             }
-        }
 
-
-        out.println("</table></body></html>");
-        out.close();
-//        rd = request.getRequestDispatcher("footer.jsp");
+            out.println("</table></body></html>");
+            out.close();
+//        requestDispatcher = request.getRequestDispatcher("footer.jsp");
 //        try {
-//            rd.include(request,response);
+//            requestDispatcher.include(request,response);
 //        } catch (ServletException e) {
 //            e.printStackTrace();
 //        }
 
+        }
     }
 }
 
