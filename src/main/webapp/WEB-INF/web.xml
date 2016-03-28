@@ -12,6 +12,10 @@
         <servlet-name>SqlExecutorServlet</servlet-name>
         <servlet-class>servlets.SqlExecutorServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>addDeptntServlet</servlet-name>
+        <servlet-class>servlets.addDeptntServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/main</url-pattern>
@@ -19,5 +23,9 @@
     <servlet-mapping>
         <servlet-name>SqlExecutorServlet</servlet-name>
         <url-pattern>/execute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>addDeptntServlet</servlet-name>
+        <url-pattern>/departmentadd</url-pattern>
     </servlet-mapping>
 </web-app>
