@@ -2,7 +2,6 @@ package servlets;
 
 import dataBaseUtils.ExecutePLSQL;
 import dataBaseUtils.ResultSetDisplay;
-import dataBaseUtils.WebLogicDbConnect;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -74,7 +73,6 @@ public class SqlExecutorServlet extends HttpServlet {
 
     }
 }
-
 
 
 

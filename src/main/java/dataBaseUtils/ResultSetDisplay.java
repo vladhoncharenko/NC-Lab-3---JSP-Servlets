@@ -44,7 +44,7 @@ public class ResultSetDisplay {
 
                 out.println("</tr>");
             }
-
+            out.println("</table>");
 
         } catch (SQLException e) {
             e.printStackTrace();
