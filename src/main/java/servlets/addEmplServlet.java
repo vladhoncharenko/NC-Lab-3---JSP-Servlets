@@ -38,16 +38,18 @@ public class addEmplServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         out.println("<html><head><title>Add Employee</title></head><body>");
-        out.println("<form method=\"post\" action=\"/lab3/employeeadd\">");
+        out.println("<form  method=\"post\" action=\"/lab3/employeeadd\">");
         out.println("<h2>To add new department: Enter data in fields and press \"Add\"</h2>");
 
         out.println("<label for=\"enameId\">Name:</label>");
         out.println("<div><input type=\"text\" name=\"ename\" value=\"\" size=\"20\" id=\"enameId\"" +
-                " data-validation=\"input-name2\" data-validation-allowing=\"-_', \" /></div>");
+                "data-validation=\"length\" data-validation-length=\"1-13\"" +
+                "data-validation-error-msg=\"Data is not valid. Please, enter 1-10 symbols.\"/></div>");
 
         out.println("<label for=\"jobId\">Job:</label>");
         out.println("<div><input type=\"text\" name=\"job\" value=\"\" size=\"20\" id=\"jobId\" " +
-                " data-validation=\"input-name2\" data-validation-allowing=\"-_', \" /></div>");
+                " data-validation=\"length\" data-validation-length=\"1-13\" " +
+                " data-validation-error-msg=\"Data is not valid. Please, enter 1-9 symbols.\" /></div>");
 
         out.println("<label for=\"hiredateId\">Hire Date:</label>");
         out.println("<div><input type=\"text\" name=\"hiredate\" value=\"\" size=\"20\" id=\"hiredateId\" " +
