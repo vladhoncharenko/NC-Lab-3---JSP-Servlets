@@ -66,7 +66,7 @@ public class addDeptntServlet extends HttpServlet {
             result = ExecutePLSQL.executeUpdate(query);
             out.println("<p>" + result + " row(s) added</p>");
         }
-        out.println("</table></body></html>");
+        out.println("</body></html>");
         out.close();
 
         requestDispatcher = request.getRequestDispatcher("footer.jsp");

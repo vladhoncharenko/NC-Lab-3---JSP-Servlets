@@ -1,19 +1,20 @@
 var config = {
-    form: 'form',
-    validate: {
-        'input-name': {
-            validation: 'length, numbet',
-            length: '0-32'
-        },
-        'input-name2': {
-            validation: 'length, alphanumeric',
-            length: '1-9'
-        }
-    }
+    form: 'form'
 };
 
+$.formUtils.addValidator({
+    name : 'canBeNull',
+    validatorFunction : function(value, $el, config, language, $form) {
+        return ((value=='NULL')||(parseInt(value)));
+    },
+    errorMessage : 'Enter valid number or NULL',
+    errorMessageKey: 'badEvenNumber'
+});
+
 $.validate({
-    modules: 'jsconf, security',
+    modules: 'jsconf, security,toggleDisabled',
+    disabledFormFilter : 'form.toggle-disabled',
+    showErrorDialogs : false,
     onModulesLoaded: function () {
         $.setupValidation(config);
     }
