@@ -39,19 +39,15 @@ public class SqlExecutorServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+        requestDispatcher = request.getRequestDispatcher("sqlExecutor.jsp");
+        try {
+            requestDispatcher.include(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        out.println("<html><head><title>Database SQL Executor</title></head><body>");
-        out.println("<form method=\"post\" action=\"/lab3/execute\">");
-        out.println("<h2>Enter query in input area and press button \"Enter\"</h2>");
-        if (request.getParameter("query") == null) {
-            out.println("<input type=\"text\" name=\"query\" value=\"\" size=\"100\" />");
-        } else {
-            out.println("<input type=\"text\" name=\"query\" value=\"" + request.getParameter("query") + "\" size=\"100\" />");
-        }
 
-        out.println("<input type=\"submit\" name=\"RUNb\" value=\"RUN\"/>");
-        out.println("</form>");
 
         String execute = request.getParameter("RUNb");
         if (execute == null) {
@@ -63,7 +59,6 @@ public class SqlExecutorServlet extends HttpServlet {
 
         }
 
-        out.println("</body></html>");
         out.close();
 
         requestDispatcher = request.getRequestDispatcher("footer.jsp");
