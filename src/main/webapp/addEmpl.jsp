@@ -1,3 +1,10 @@
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ taglib prefix="c"
+           uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+    SimpleDateFormat dateFormat = new SimpleDateFormat("YYYY-MM-dd");
+%>
 <%--
  View of add Employee Servlet
 --%>
@@ -7,6 +14,7 @@
     <title>Add Employee</title>
 </head>
 <body>
+
 <form method="post" action="/lab3/employeeadd">
     <h2>To add new department: Enter data in fields and press "Add"</h2>
 
@@ -21,7 +29,7 @@
     </div>
 
     <label for="hiredateId">Hire Date:</label>
-    <div><input type="text" name="hiredate" value="" size="20" id="hiredateId" data-validation="date"
+    <div><input type="text" name="hiredate" value=<%=dateFormat.format(new Date())%> size="20" id="hiredateId" data-validation="date"
                 data-validation-help="In Format: YYYY-MM-DD "/></div>
 
     <label for="mgrId">Manager's Id:</label>

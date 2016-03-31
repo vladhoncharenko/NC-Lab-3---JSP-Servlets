@@ -5,7 +5,7 @@ var config = {
 $.formUtils.addValidator({
     name : 'canBeNull',
     validatorFunction : function(value, $el, config, language, $form) {
-        return ((value=='NULL')||(parseInt(value)));
+        return ((value=='NULL')||(parseInt(value))||(value=='null'));
     },
     errorMessage : 'Enter valid number or NULL',
     errorMessageKey: 'badEvenNumber'
