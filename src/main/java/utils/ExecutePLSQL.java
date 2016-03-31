@@ -1,4 +1,4 @@
-package dataBaseUtils;
+package utils;
 
 import com.sun.rowset.CachedRowSetImpl;
 

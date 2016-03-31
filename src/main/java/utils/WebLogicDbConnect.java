@@ -1,4 +1,4 @@
-package dataBaseUtils;
+package utils;
 
 
 import javax.naming.Context;

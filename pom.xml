@@ -24,8 +24,16 @@
       <artifactId>jstl</artifactId>
       <version>1.2</version>
     </dependency>
-
   </dependencies>
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.6</version>
+      </plugin>
+    </plugins>
+  </reporting>
   <build>
     <finalName>lab3</finalName>
   </build>

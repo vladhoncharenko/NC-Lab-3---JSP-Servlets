@@ -1,7 +1,7 @@
 package servlets;
 
-import dataBaseUtils.ExecutePLSQL;
-import dataBaseUtils.ResultSetDisplay;
+import utils.ExecutePLSQL;
+import utils.ResultSetDisplay;
 
 import java.io.IOException;
 import java.io.PrintWriter;

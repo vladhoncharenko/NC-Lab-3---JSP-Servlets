@@ -1,6 +1,6 @@
 package servlets;
 
-import dataBaseUtils.ExecutePLSQL;
+import utils.ExecutePLSQL;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -48,7 +48,7 @@ public class addEmplServlet extends HttpServlet {
                 + "','" + request.getParameter("job") + "',TO_DATE('" + request.getParameter("hiredate") + "','YYYY-MM-DD')," +
                 request.getParameter("mgr") + "," + request.getParameter("sal") + "," + request.getParameter("comm") + "," +
                 request.getParameter("deptno") + ")");
-
+        System.out.println(query);
         String execute = request.getParameter("RUNb");
         if (execute == null) {
             //no button has been selected
