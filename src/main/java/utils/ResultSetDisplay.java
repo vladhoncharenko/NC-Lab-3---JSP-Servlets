@@ -51,7 +51,7 @@ public class ResultSetDisplay {
         }
     }
 
-    public static void displayEdit(ResultSet resultSet, PrintWriter out){
+    public static void displayEditDelete(ResultSet resultSet, PrintWriter out){
         ResultSetMetaData resultSetMetaData;
         int i =0;
 
@@ -66,7 +66,8 @@ public class ResultSetDisplay {
 
                 out.println("<th>" + resultSetMetaData.getColumnName(i) + "</th>");
             }
-            out.println("<th>edit</th>");
+            out.println("<th>Edit</th>");
+            out.println("<th>Delete</th>");
 
             out.println("</tr>");
             //print data
@@ -78,6 +79,7 @@ public class ResultSetDisplay {
                     out.println("<td>" + resultSet.getString(i) + "</td>");
 
                 out.println("<td> <input type=\"submit\" name=\""+i+"cell\" value=\"Edit\"></td>" );
+                out.println("<td> <input type=\"submit\" name=\""+i+"cell\" value=\"Delete\"></td>" );
                 out.println("</tr>");
             }
             out.println("</table>");
