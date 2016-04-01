@@ -32,6 +32,10 @@
         <servlet-name>DeptntBrowserServlet</servlet-name>
         <servlet-class>servlets.DeptntBrowserServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EmplBrowserServlet</servlet-name>
+        <servlet-class>servlets.EmplBrowserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginRegisterServlet</servlet-name>
         <url-pattern>login</url-pattern>
@@ -55,9 +59,13 @@
     <servlet-mapping>
     <servlet-name>indexServlet</servlet-name>
     <url-pattern>index</url-pattern>
-</servlet-mapping>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeptntBrowserServlet</servlet-name>
         <url-pattern>/departments</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EmplBrowserServlet</servlet-name>
+        <url-pattern>/employees</url-pattern>
     </servlet-mapping>
 </web-app>
