@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-<div class="content"></div>
+<%--<div class="content"></div>--%>
 <div class="footer">
     <div class="footer-content">
         <p>&copy; 2016 V&H | Design and Development. All Rights Reserved.</p>

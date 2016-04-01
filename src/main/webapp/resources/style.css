@@ -2,7 +2,8 @@ body{
     background-color: #333;
 }
 .header{
-    width: 100%;
+    float:left;
+    min-width: 101%;
     height: 100px;
     background-color: black;
     margin: 0 auto;
@@ -39,7 +40,7 @@ li a:hover {
 }
 
 .footer{
-    width: 100%;
+    width: 101%;
 
     background-color: #000000;
     display: block;
@@ -65,9 +66,25 @@ li a:hover {
 
 .content{
     min-height: 100%;
-    margin-bottom: -40px;
+    margin-bottom: 40px;
 }
 .content:after{
     content: "";
     display: block;
+}
+
+
+.regbutton{
+
+    position: absolute;
+    top: 125px;
+    right: 150px;
+
+}
+
+
+
+.regbutton:hover {
+   display: block;
+
 }

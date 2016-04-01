@@ -21,6 +21,7 @@ public class ResultSetDisplay {
 
         ResultSetMetaData resultSetMetaData;
 
+
         try {
 
             resultSetMetaData = resultSet.getMetaData();
@@ -32,7 +33,6 @@ public class ResultSetDisplay {
 
                 out.println("<th>" + resultSetMetaData.getColumnName(i) + "</th>");
             }
-
             out.println("</tr>");
             //print data
             while (resultSet.next()) {
@@ -42,6 +42,42 @@ public class ResultSetDisplay {
                 for (int i = 1; i <= colCount; ++i)
                     out.println("<td>" + resultSet.getString(i) + "</td>");
 
+                out.println("</tr>");
+            }
+            out.println("</table>");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void displayEdit(ResultSet resultSet, PrintWriter out){
+        ResultSetMetaData resultSetMetaData;
+        int i =0;
+
+        try {
+
+            resultSetMetaData = resultSet.getMetaData();
+            int colCount = resultSetMetaData.getColumnCount();
+
+            //print column names
+            out.println("<table border='1'><tr>");
+            for ( i = 1; i <= colCount; ++i) {
+
+                out.println("<th>" + resultSetMetaData.getColumnName(i) + "</th>");
+            }
+            out.println("<th>edit</th>");
+
+            out.println("</tr>");
+            //print data
+            while (resultSet.next()) {
+
+                out.println("<tr>");
+
+                for (i = 1; i <= colCount; ++i)
+                    out.println("<td>" + resultSet.getString(i) + "</td>");
+
+                out.println("<td> <input type=\"submit\" name=\""+i+"cell\" value=\"Edit\"></td>" );
                 out.println("</tr>");
             }
             out.println("</table>");
