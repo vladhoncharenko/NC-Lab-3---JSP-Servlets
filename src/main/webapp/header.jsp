@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="/execute">
+        <a href="/lab3">
             <img src="resources/logo.jpg" height="100" width="150">
         </a>
         <ul>
