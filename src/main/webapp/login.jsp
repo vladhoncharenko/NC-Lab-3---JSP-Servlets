@@ -9,7 +9,8 @@
 <div class="bodycontent">
 <div class="wrap" align="center">
 <form method="post" action="login">
-
+<br>
+    <br>
         <table border="1" width="30%" cellpadding="3">
             <thead>
             <tr>
@@ -26,8 +27,8 @@
                 <td><input type="password" name="pass" value="" /></td>
             </tr>
             <tr>
-                <td><input type="submit" value="Login" /></td>
-                <td><input type="reset" value="Reset" /></td>
+                <td align="center"><input type="reset" value="Reset" /></td>
+                <td align="center"><input type="submit" value="Login" /></td>
             </tr>
             </tbody>
         </table>
@@ -58,8 +59,8 @@
                     <td><input type="password" name="pass" value="" /></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Submit" /></td>
-                    <td><input type="reset" value="Reset" /></td>
+                    <td align="center"><input type="reset" value="Reset" /></td>
+                    <td align="center"><input type="submit" value="Submit" /></td>
                 </tr>
                 </tbody>
             </table>
