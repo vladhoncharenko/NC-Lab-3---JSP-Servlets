@@ -1,6 +1,7 @@
 package servlets;
 
 import utils.ExecutePLSQL;
+import utils.ResultSetDisplay;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 
 /**
- * Servlet for adding Departments
+ * Shows all departments from DB
  */
-public class AddDeptntServlet extends HttpServlet {
+public class DeptntBrowserServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
     }
@@ -24,6 +27,9 @@ public class AddDeptntServlet extends HttpServlet {
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+        ResultSet resultSet = null;
+        ResultSetMetaData rsm = null;
+        String query = "SELECT * FROM DEPTNT";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("header.jsp");
         try {
             requestDispatcher.include(request, response);
@@ -31,25 +37,13 @@ public class AddDeptntServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        requestDispatcher = request.getRequestDispatcher("addDept.jsp");
-        try {
-            requestDispatcher.include(request, response);
-        } catch (ServletException e) {
-            e.printStackTrace();
-        }
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
-        int result = 0;
-        String query = null;
-        query = ("INSERT INTO DEPTNT(DNAME,LOC) VALUES('" + request.getParameter("dname") + "','" + request.getParameter("loc") + "')");
-        String execute = request.getParameter("RUNb");
+        out.println("<title>Departments Browsing</title>");
+        out.println("<h1 align=\"center\">Departments:</h1>");
+        resultSet = ExecutePLSQL.executeQuery(query);
+        ResultSetDisplay.displayEditDelete(resultSet, out);
 
-        if (execute == null) {
-            //no button has been selected
-        } else if (execute.equals("Add")) {
-            result = ExecutePLSQL.executeUpdate(query);
-            out.println("<p>" + result + " row(s) added</p>");
-        }
         out.close();
 
         requestDispatcher = request.getRequestDispatcher("footer.jsp");
@@ -58,5 +52,7 @@ public class AddDeptntServlet extends HttpServlet {
         } catch (ServletException e) {
             e.printStackTrace();
         }
+
     }
+
 }

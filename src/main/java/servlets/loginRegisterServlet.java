@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name = "loginRegisterServlet")
-public class loginRegisterServlet extends HttpServlet {
+@WebServlet(name = "LoginRegisterServlet")
+public class LoginRegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
             process(request,response);
     }

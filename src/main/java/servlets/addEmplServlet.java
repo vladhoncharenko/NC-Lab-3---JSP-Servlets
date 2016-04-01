@@ -13,7 +13,7 @@ import java.io.PrintWriter;
 /**
  * Servlet for adding Employees
  */
-public class addEmplServlet extends HttpServlet {
+public class AddEmplServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
     }

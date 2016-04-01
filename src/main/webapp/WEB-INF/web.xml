@@ -14,19 +14,23 @@
     </servlet>
     <servlet>
         <servlet-name>addDeptntServlet</servlet-name>
-        <servlet-class>servlets.addDeptntServlet</servlet-class>
+        <servlet-class>servlets.AddDeptntServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>addEmplServlet</servlet-name>
-        <servlet-class>servlets.addEmplServlet</servlet-class>
+        <servlet-class>servlets.AddEmplServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>indexServlet</servlet-name>
-        <servlet-class>servlets.indexServlet</servlet-class>
+        <servlet-class>servlets.IndexServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>loginRegisterServlet</servlet-name>
-        <servlet-class>servlets.loginRegisterServlet</servlet-class>
+        <servlet-class>servlets.LoginRegisterServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeptntBrowserServlet</servlet-name>
+        <servlet-class>servlets.DeptntBrowserServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>loginRegisterServlet</servlet-name>
@@ -49,7 +53,11 @@
         <url-pattern>/employeeadd</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>indexServlet</servlet-name>
-        <url-pattern>index</url-pattern>
+    <servlet-name>indexServlet</servlet-name>
+    <url-pattern>index</url-pattern>
+</servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeptntBrowserServlet</servlet-name>
+        <url-pattern>/departments</url-pattern>
     </servlet-mapping>
 </web-app>

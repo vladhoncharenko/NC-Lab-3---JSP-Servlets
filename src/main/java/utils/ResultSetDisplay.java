@@ -61,6 +61,7 @@ public class ResultSetDisplay {
             int colCount = resultSetMetaData.getColumnCount();
 
             //print column names
+            out.println("<p align=\"center\">");
             out.println("<table border='1'><tr>");
             for ( i = 1; i <= colCount; ++i) {
 
@@ -83,7 +84,7 @@ public class ResultSetDisplay {
                 out.println("</tr>");
             }
             out.println("</table>");
-
+            out.println("</p>");
         } catch (SQLException e) {
             e.printStackTrace();
         }
