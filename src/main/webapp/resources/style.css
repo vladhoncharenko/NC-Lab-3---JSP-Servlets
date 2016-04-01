@@ -82,7 +82,9 @@ li a:hover {
 
 }
 
-
+.bodycontent{
+    height: 750px;
+}
 
 .regbutton:hover {
    display: block;

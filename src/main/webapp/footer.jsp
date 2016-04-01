@@ -2,7 +2,6 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="resources/style.css">
-    <title></title>
 </head>
 <body>
 <%--<div class="content"></div>--%>

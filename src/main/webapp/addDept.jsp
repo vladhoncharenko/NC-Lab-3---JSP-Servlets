@@ -7,7 +7,7 @@
     <title>Add Department</title>
 </head>
 <body>
-
+<div class="bodycontent">
 <form method="post" action="/lab3/departmentadd">
     <h2>To add new department: Enter data in fields and press "Add"</h2>
 
@@ -22,6 +22,7 @@
 
     <input type="submit" name="RUNb" value="Add"/>
 </form>
+</div>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript"
         src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.2.8/jquery.form-validator.min.js"></script>

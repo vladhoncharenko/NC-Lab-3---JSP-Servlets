@@ -8,11 +8,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Login/Register</title>
+    <link rel="stylesheet" href="resources/login.css" type="text/css">
 </head>
 <body>
+<div class="bodycontent">
+<div class="wrap" align="center">
 <form method="post" action="login">
-    <center>
+
         <table border="1" width="30%" cellpadding="3">
             <thead>
             <tr>
@@ -32,12 +35,43 @@
                 <td><input type="submit" value="Login" /></td>
                 <td><input type="reset" value="Reset" /></td>
             </tr>
-            <tr>
-                <td colspan="2">Yet Not Registered!! <a href="reg.jsp">Register Here</a></td>
-            </tr>
             </tbody>
         </table>
-    </center>
 </form>
+    <form method="post" action="registration.jsp">
+
+            <table border="1" width="30%" cellpadding="5">
+                <thead>
+                <tr>
+                    <th colspan="2">Register</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Your Employee ID</td>
+                    <td><input type="text" name="id" value="" /></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="text" name="email" value="" /></td>
+                </tr>
+                <tr>
+                    <td>User Name</td>
+                    <td><input type="text" name="uname" value="" /></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="pass" value="" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                    <td><input type="reset" value="Reset" /></td>
+                </tr>
+                </tbody>
+            </table>
+
+    </form>
+</div>
+</div>
 </body>
 </html>
