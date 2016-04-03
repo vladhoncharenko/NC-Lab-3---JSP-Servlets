@@ -29,18 +29,19 @@
     </div>
 
     <label for="hiredateId">Hire Date:</label>
-    <div><input type="text" name="hiredate" value=<%=dateFormat.format(new Date())%> size="20" id="hiredateId" data-validation="date"
+    <div><input type="text" name="hiredate" value="<%=dateFormat.format(new Date())%>" size="20" id="hiredateId" data-validation="date"
                 data-validation-help="In Format: YYYY-MM-DD "/></div>
 
+
+    <%--TODO: data validation--%>
     <label for="mgrId">Manager's Id:</label>
     <div><input type="text" name="mgr" value="" size="20" id="mgrId" data-validation="canBeNull"
                 data-validation-length="1-10"
                 data-validation-error-msg="Data is not valid. Please, enter valid numeric Manager's Id or or enter NULL"
                 data-validation-help="Enter number or NULL"/></div>
-
     <label for="salId">Salary:</label>
     <div><input type="text" name="sal" value="" size="20" id="salId" data-validation="number"
-                data-validation-error-msg="Data is not valid. Please, enter only numbers."/></div>
+                data-validation-error-msg="Data is not valid. Please, enter only numbers(1-7)."/></div>
 
     <label for="commId">Commissions:</label>
     <div><input type="text" name="comm" value="" size="20" id="commId" data-validation="canBeNull"

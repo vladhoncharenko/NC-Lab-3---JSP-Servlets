@@ -42,7 +42,7 @@ public class DeptntBrowserServlet extends HttpServlet {
         out.println("<title>Departments Browsing</title>");
         out.println("<h1 align=\"center\">Departments:</h1>");
         resultSet = ExecutePLSQL.executeQuery(query);
-        ResultSetDisplay.displayEditDelete(resultSet, out);
+        ResultSetDisplay.displayEditDeleteDeptnt(resultSet, out);
 
         out.close();
 

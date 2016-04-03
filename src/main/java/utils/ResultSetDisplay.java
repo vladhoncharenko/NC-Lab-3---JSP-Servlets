@@ -1,5 +1,6 @@
 package utils;
 
+
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -15,7 +16,7 @@ public class ResultSetDisplay {
      * Displays ResultSet content in the html table
      *
      * @param resultSet ResultSet
-     * @param out PrintWriter
+     * @param out       PrintWriter
      */
     public static void display(ResultSet resultSet, PrintWriter out) {
 
@@ -51,9 +52,9 @@ public class ResultSetDisplay {
         }
     }
 
-    public static void displayEditDelete(ResultSet resultSet, PrintWriter out){
+    public static void displayEditDeleteDeptnt(ResultSet resultSet, PrintWriter out) {
         ResultSetMetaData resultSetMetaData;
-        int i =0;
+        int i = 0;
 
         try {
 
@@ -63,10 +64,11 @@ public class ResultSetDisplay {
             //print column names
             out.println("<p align=\"center\">");
             out.println("<table border='1'><tr>");
-            for ( i = 1; i <= colCount; ++i) {
+            for (i = 1; i <= colCount; ++i) {
 
                 out.println("<th>" + resultSetMetaData.getColumnName(i) + "</th>");
             }
+
             out.println("<th>Edit</th>");
             out.println("<th>Delete</th>");
 
@@ -79,8 +81,8 @@ public class ResultSetDisplay {
                 for (i = 1; i <= colCount; ++i)
                     out.println("<td>" + resultSet.getString(i) + "</td>");
 
-                out.println("<td> <input type=\"submit\" name=\""+i+"cell\" value=\"Edit\"></td>" );
-                out.println("<td> <input type=\"submit\" name=\""+i+"cell\" value=\"Delete\"></td>" );
+                out.println("<td> <form action=\"/lab3/updatedepartment\" method=\"post\"> <input type=\"hidden\" name=\"deptntNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"deptntNo\"  value=\"Edit\"></form></td>");
+                out.println("<td> <form action=\"/lab3/deletedepartment\" method=\"post\"> <input type=\"hidden\" name=\"deptntNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"deptntNo\"  value=\"Delete\"></form></td>");
                 out.println("</tr>");
             }
             out.println("</table>");

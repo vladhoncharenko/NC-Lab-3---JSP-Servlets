@@ -42,7 +42,7 @@ public class EmplBrowserServlet extends HttpServlet {
         out.println("<title>Employees Browsing</title>");
         out.println("<h1 align=\"center\">Employees:</h1>");
         resultSet = ExecutePLSQL.executeQuery(query);
-        ResultSetDisplay.displayEditDelete(resultSet, out);
+       // ResultSetDisplay.displayEditDelete(resultSet, out);
 
         out.close();
 
