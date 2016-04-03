@@ -92,6 +92,47 @@ public class ResultSetDisplay {
         }
     }
 
+
+    public static void displayEditDeleteEmpl(ResultSet resultSet, PrintWriter out) {
+        ResultSetMetaData resultSetMetaData;
+        int i = 0;
+
+        try {
+
+            resultSetMetaData = resultSet.getMetaData();
+            int colCount = resultSetMetaData.getColumnCount();
+
+            //print column names
+            out.println("<p align=\"center\">");
+            out.println("<table border='1'><tr>");
+            for (i = 1; i <= colCount; ++i) {
+
+                out.println("<th>" + resultSetMetaData.getColumnName(i) + "</th>");
+            }
+
+            out.println("<th>Edit</th>");
+            out.println("<th>Delete</th>");
+
+            out.println("</tr>");
+            //print data
+            while (resultSet.next()) {
+
+                out.println("<tr>");
+
+                for (i = 1; i <= colCount; ++i)
+                    out.println("<td>" + resultSet.getString(i) + "</td>");
+
+                out.println("<td> <form action=\"/lab3/updateemployee\" method=\"post\"> <input type=\"hidden\" name=\"emplNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"emplNo\"  value=\"Edit\"></form></td>");
+                out.println("<td> <form action=\"/lab3/deleteemployee\" method=\"post\"> <input type=\"hidden\" name=\"emplNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"emplNo\"  value=\"Delete\"></form></td>");
+                out.println("</tr>");
+            }
+            out.println("</table>");
+            out.println("</p>");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Returns rows amount in ResultSet
      *

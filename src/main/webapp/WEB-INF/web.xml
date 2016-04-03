@@ -40,6 +40,10 @@
         <servlet-name>DeleteDeptnt</servlet-name>
         <servlet-class>servlets.DeleteDeptnt</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteEmpl</servlet-name>
+        <servlet-class>servlets.DeleteEmpl</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>loginRegisterServlet</servlet-name>
         <url-pattern>login</url-pattern>
@@ -75,5 +79,9 @@
     <servlet-mapping>
         <servlet-name>DeleteDeptnt</servlet-name>
         <url-pattern>/deletedepartment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteEmpl</servlet-name>
+        <url-pattern>/deleteemployee</url-pattern>
     </servlet-mapping>
 </web-app>
