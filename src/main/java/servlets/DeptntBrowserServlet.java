@@ -29,7 +29,7 @@ public class DeptntBrowserServlet extends HttpServlet {
 
         ResultSet resultSet = null;
         ResultSetMetaData rsm = null;
-        String query = "SELECT * FROM DEPTNT";
+        String query = "SELECT * FROM DEPTNT ORDER BY DEPTNO";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("header.jsp");
         try {
             requestDispatcher.include(request, response);

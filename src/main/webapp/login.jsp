@@ -72,7 +72,7 @@
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" name="regemail" value="" data-validation='validateEmail'/></td>
+                    <td><input type="text" name="regemail" value="" data-validation='email'/></td>
                 </tr>
                 <tr>
                     <td>User Name</td>

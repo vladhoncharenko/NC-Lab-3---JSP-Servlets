@@ -9,10 +9,12 @@
             <img src="resources/logo.jpg" height="100" width="150">
         </a>
         <ul>
-            <li><a href="default.asp">Home</a></li>
-            <li><a href="news.asp">News</a></li>
-            <li><a href="contact.asp">Contact</a></li>
-            <li><a href="about.asp">About</a></li>
+            <li><a href="./">Home</a></li>
+            <li><a href="./employees">Employees</a></li>
+            <li><a href="./employeeadd">Add Employee</a></li>
+            <li><a href="./departments">Departments</a></li>
+            <li><a href="./departmentadd">Add department</a></li>
+            <li><a href="./execute">Execute SQL</a></li>
         </ul>
     </div>
 </body>
