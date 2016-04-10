@@ -20,7 +20,7 @@
                 data-validation-length="1-13"
                 data-validation-error-msg="Data is not valid. Please, enter 1-13 symbols."/></div>
 
-    <input type="submit" name="RUNb" value="Add"/>
+    <input wtype="submit" name="RUNb" value="Add"/>
 </form>
 </div>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

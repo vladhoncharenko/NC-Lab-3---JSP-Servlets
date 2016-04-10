@@ -28,12 +28,12 @@
             </tr>
             <tr>
                 <td align="center"><input type="reset" value="Reset" /></td>
-                <td align="center"><input type="submit" value="Login" /></td>
+                <td align="center"><input type="submit" name="login" value="Login" /></td>
             </tr>
             </tbody>
         </table>
 </form>
-    <form method="post" action="registration.jsp">
+    <form method="post" action="login">
 
             <table border="1" width="30%" cellpadding="5">
                 <thead>
@@ -44,23 +44,23 @@
                 <tbody>
                 <tr>
                     <td>Your Employee ID</td>
-                    <td><input type="text" name="id" value="" /></td>
+                    <td><input type="text" name="regid" value="" /></td>
                 </tr>
                 <tr>
                     <td>Email</td>
-                    <td><input type="text" name="email" value="" /></td>
+                    <td><input type="text" name="regemail" value="" /></td>
                 </tr>
                 <tr>
                     <td>User Name</td>
-                    <td><input type="text" name="uname" value="" /></td>
+                    <td><input type="text" name="reguname" value="" /></td>
                 </tr>
                 <tr>
                     <td>Password</td>
-                    <td><input type="password" name="pass" value="" /></td>
+                    <td><input type="password" name="regpass" value="" /></td>
                 </tr>
                 <tr>
                     <td align="center"><input type="reset" value="Reset" /></td>
-                    <td align="center"><input type="submit" value="Submit" /></td>
+                    <td align="center"><input type="submit" name="register" value="Submit" /></td>
                 </tr>
                 </tbody>
             </table>
