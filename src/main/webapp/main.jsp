@@ -12,5 +12,7 @@
 </head>
 <body>
 <p>Hello <%=session.getAttribute("uname")%>!</p>
+<p>Your id is <%=session.getAttribute("empno")%></p>
+<a href="./employees">Click here</a>
 </body>
 </html>

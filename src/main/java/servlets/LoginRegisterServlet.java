@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -50,7 +51,8 @@ public class LoginRegisterServlet extends HttpServlet {
             try {
                 if (rs.next()) {
                     request.getSession().setAttribute("uname", uname);
-                    response.sendRedirect("main.jsp");
+                    request.getSession().setAttribute("empno",rs.getString("EMPNO"));
+                    response.sendRedirect("employees");
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -60,14 +62,30 @@ public class LoginRegisterServlet extends HttpServlet {
         }
         if (request.getParameter("register") != null) {
             try {
-                System.out.println("INSERT INTO USERS VALUES("+request.getParameter("regid")+
-                        ",'"+request.getParameter("reguname") + "','"+request.getParameter("regpass")+"','"+
-                        request.getParameter("regemail") + "',SYSDATE)");
-                ExecutePLSQL.executeUpdate("INSERT INTO USERS VALUES("+request.getParameter("regid")+
-                        ",'"+request.getParameter("reguname") + "','"+request.getParameter("regpass")+"','"+
-                        request.getParameter("regemail") + "',SYSDATE)");
-                response.sendRedirect("index");
+                uname= request.getParameter("reguname");
+                password = request.getParameter("regemail");
+                ResultSet rs = ExecutePLSQL.executeQuery("SELECT * FROM USERS WHERE USERNAME='" + uname + "' OR " +
+                        "EMAIL='" + password + "'" + " OR " + "EMPNO = "+ request.getParameter("regid"));
+                if(rs.next()){
+                    request.getSession().setAttribute("fail","failure");
+                    response.sendRedirect("login");
+                }
+                else {
+                    System.out.println("INSERT INTO USERS VALUES(" + request.getParameter("regid") +
+                            ",'" + request.getParameter("reguname") + "','" + request.getParameter("regpass") + "','" +
+                            request.getParameter("regemail") + "',SYSDATE)");
+                    ExecutePLSQL.executeUpdate("INSERT INTO USERS VALUES(" + request.getParameter("regid") +
+                            ",'" + request.getParameter("reguname") + "','" + request.getParameter("regpass") + "','" +
+                            request.getParameter("regemail") + "',SYSDATE)");
+                    response.sendRedirect("login");
+                    request.getSession().setAttribute("reg", "success");
+                }
+//
+//
+
             } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }

@@ -29,7 +29,11 @@ public class EmplBrowserServlet extends HttpServlet {
 
         ResultSet resultSet = null;
         ResultSetMetaData rsm = null;
-        String query = "SELECT * FROM EMPL";
+//        String query = "SELECT * FROM EMPL";
+        String query = "select * from EMPL " +
+                "START WITH empno=" + request.getSession().getAttribute("empno") +
+                " CONNECT BY prior EMPNO = MGR " +
+                " ORDER BY EMPNO";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("header.jsp");
         try {
             requestDispatcher.include(request, response);
