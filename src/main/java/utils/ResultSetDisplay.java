@@ -52,6 +52,11 @@ public class ResultSetDisplay {
         }
     }
 
+    /**
+     * Displays Edit/Delete buttons for Departments
+     * @param resultSet
+     * @param out
+     */
     public static void displayEditDeleteDeptnt(ResultSet resultSet, PrintWriter out) {
         ResultSetMetaData resultSetMetaData;
         int i = 0;
@@ -92,7 +97,11 @@ public class ResultSetDisplay {
         }
     }
 
-
+    /**
+     * Displays Edit/Delete buttons for Employees
+     * @param resultSet
+     * @param out
+     */
     public static void displayEditDeleteEmpl(ResultSet resultSet, PrintWriter out) {
         ResultSetMetaData resultSetMetaData;
         int i = 0;
@@ -122,7 +131,7 @@ public class ResultSetDisplay {
                 for (i = 1; i <= colCount; ++i)
                     out.println("<td>" + resultSet.getString(i) + "</td>");
 
-                out.println("<td> <form action=\"/lab3/updateemployee\" method=\"post\"> <input type=\"hidden\" name=\"emplNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"emplNo\"  value=\"Edit\"></form></td>");
+                out.println("<td> <form action=\"/lab3/editemployee\" method=\"post\"> <input type=\"hidden\" name=\"emplNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"emplNo\"  value=\"Edit\"></form></td>");
                 out.println("<td> <form action=\"/lab3/deleteemployee\" method=\"post\"> <input type=\"hidden\" name=\"emplNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"emplNo\"  value=\"Delete\"></form></td>");
                 out.println("</tr>");
             }
@@ -132,6 +141,7 @@ public class ResultSetDisplay {
             e.printStackTrace();
         }
     }
+
 
     /**
      * Returns rows amount in ResultSet

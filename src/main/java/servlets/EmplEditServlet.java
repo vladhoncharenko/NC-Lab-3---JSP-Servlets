@@ -4,6 +4,7 @@ import utils.ExecutePLSQL;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,9 +12,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Servlet for editing Departments
+ * Servlet for editing Employees
  */
-public class DeptntEditServlet extends HttpServlet {
+public class EmplEditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
     }
@@ -23,7 +24,7 @@ public class DeptntEditServlet extends HttpServlet {
     }
 
     private void process(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String deptntPage = "./departments";
+        String deptntPage = "./employees";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("header.jsp");
         try {
             requestDispatcher.include(request, response);
@@ -31,7 +32,7 @@ public class DeptntEditServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        requestDispatcher = request.getRequestDispatcher("editDeptnt.jsp");
+        requestDispatcher = request.getRequestDispatcher("editEmpl.jsp");
         try {
             requestDispatcher.include(request, response);
         } catch (ServletException e) {
@@ -42,7 +43,10 @@ public class DeptntEditServlet extends HttpServlet {
         int result = 0;
         String query = null;
 
-        query = (" UPDATE DEPTNT SET DNAME='" + request.getParameter("dname") + "', LOC='" + request.getParameter("loc") + "' WHERE DEPTNO = '" + request.getParameter("DeptntNoF") + "'");
+        query = ("UPDATE EMPL SET ENAME='" + request.getParameter("ename") + "', JOB='" + request.getParameter("job") +
+                "',HIREDATE= TO_DATE('" + request.getParameter("hiredate") + "','YYYY-MM-DD'),MGR=" + request.getParameter("mgr") +
+                ",SAL=" + request.getParameter("sal") + ",COMM=" + request.getParameter("comm") + ",DEPTNO=" + request.getParameter("deptno") +
+                " WHERE EMPNO= " + request.getParameter("emplNoF"));
         System.out.println(query);
         String execute = request.getParameter("RUNb");
 
@@ -62,4 +66,3 @@ public class DeptntEditServlet extends HttpServlet {
         }
     }
 }
-
