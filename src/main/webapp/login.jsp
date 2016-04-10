@@ -13,6 +13,12 @@
     </script>
 <%session.setAttribute("fail",null);
 }%>
+<%if (session.getAttribute("loginfail")!=null){%>
+<script>
+    alert('Wrong username or password')
+</script>
+<%session.setAttribute("loginfail",null);
+}%>
 <%if (session.getAttribute("reg")!=null){%>
 <script>
     alert('Registration successful!')

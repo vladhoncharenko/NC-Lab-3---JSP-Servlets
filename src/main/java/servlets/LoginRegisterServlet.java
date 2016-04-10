@@ -54,6 +54,10 @@ public class LoginRegisterServlet extends HttpServlet {
                     request.getSession().setAttribute("empno",rs.getString("EMPNO"));
                     response.sendRedirect("employees");
                 }
+                else{
+                    request.getSession().setAttribute("loginfail","loginfail");
+                    response.sendRedirect("login");
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             } catch (IOException e) {
