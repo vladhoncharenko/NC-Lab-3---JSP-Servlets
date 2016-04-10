@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Hashtable;
 
+//TODO Переделать в синглтон.Сделать интерфейс для этого класса.
 public class WebLogicDbConnect {
     static DataSource dataSource;
 

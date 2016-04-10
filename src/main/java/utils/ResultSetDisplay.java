@@ -81,7 +81,7 @@ public class ResultSetDisplay {
                 for (i = 1; i <= colCount; ++i)
                     out.println("<td>" + resultSet.getString(i) + "</td>");
 
-                out.println("<td> <form action=\"/lab3/updatedepartment\" method=\"post\"> <input type=\"hidden\" name=\"deptntNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"deptntNo\"  value=\"Edit\"></form></td>");
+                out.println("<td> <form action=\"/lab3/editdepartment\" method=\"post\"> <input type=\"hidden\" name=\"deptntNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"deptntNo\"  value=\"Edit\"></form></td>");
                 out.println("<td> <form action=\"/lab3/deletedepartment\" method=\"post\"> <input type=\"hidden\" name=\"deptntNoField\" value=\"" + resultSet.getString(1) + "\"> <input  type=\"submit\"  name=\"deptntNo\"  value=\"Delete\"></form></td>");
                 out.println("</tr>");
             }
