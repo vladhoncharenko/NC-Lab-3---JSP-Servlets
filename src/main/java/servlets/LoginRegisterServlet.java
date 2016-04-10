@@ -28,11 +28,11 @@ public class LoginRegisterServlet extends HttpServlet {
     private void process(HttpServletRequest request, HttpServletResponse response){
         response.setContentType("text/html; charset=UTF-8");
 
-        RequestDispatcher header = request.getRequestDispatcher("header.jsp");
+
         RequestDispatcher content = request.getRequestDispatcher("login.jsp");
         RequestDispatcher footer = request.getRequestDispatcher("footer.jsp");
         try {
-            header.include(request, response);
+
             content.include(request,response);
             footer.include(request,response);
         } catch (ServletException e) {
@@ -52,7 +52,7 @@ public class LoginRegisterServlet extends HttpServlet {
                 if (rs.next()) {
                     request.getSession().setAttribute("uname", uname);
                     request.getSession().setAttribute("empno",rs.getString("EMPNO"));
-                    response.sendRedirect("employees");
+                    response.sendRedirect("menu.jsp");
                 }
                 else{
                     request.getSession().setAttribute("loginfail","loginfail");
